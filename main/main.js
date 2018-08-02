@@ -5,7 +5,7 @@ module.exports = function main(num) {
     var one = ["...","..|","..|"];
     var two = ["._.","._|","|_."];
     var three = ["._.","._|","._|"];
-    var four = ["...","|.|","..|"];
+    var four = ["...","|_|","..|"];
     var five = ["._.","|_.","._|"];
     var six = ["._.","|_.","|_|"];
     var seven = ["._.","..|","..|"];
@@ -15,52 +15,52 @@ module.exports = function main(num) {
     /*
       LED分为三行显示数字，所以本程序的思想是如果数字位数多于1，先
       将数字拆分，然后将拆分后每个数字的第1行，第2行，第3行分别合并
-      到一个字符串中，最后再用join('\n')来得到想要的输出形式。
+      到同一行.
       用两个for循环来实现将数字转换成相应LED显示形式，LED分为三行
-      显示数字，内循环用来实现将拆分后每个数字的第j行放在一个temp数
-      组中暂存，外循环实现现将内循环的temp数组中的字符串合并为一个字
-      符串，也就是将拆分后每个数字的第j行合并到一个字符串，通过循环3次，
-      得到数字的完整三行LED显示。最后通过graph.join('\n')控制输出格式。 
+      显示数字，内循环用来实现将拆分后每个数字的第j行放在graph中，
+      外循环通过循环3次，得到数字的完整三行LED显示。 
     */
-    var graph = [];
+    var graph = '';
     for(var j = 0; j < 3; j++){
-        var temp = [];
         for(var i =0; i < num.length; i++){
             switch (Number(num[i])){
                 case 0:
-                temp.push(zero[j]);
+                graph +=zero[j];
                 break;
                 case 1:
-                temp.push(one[j]);
+                graph +=one[j];
                 break;
                 case 2:
-                temp.push(two[j]);
+                graph +=two[j];
                 break;
                 case 3:
-                temp.push(three[j]);
+                graph +=three[j];
                 break;
                 case 4:
-                temp.push(four[j]);
+                graph +=four[j];
                 break;
                 case 5:
-                temp.push(five[j]);
+                graph +=five[j];
                 break;
                 case 6:
-                temp.push(six[j]);
+                graph +=six[j];
                 break;
                 case 7:
-                temp.push(seven[j]);
+                graph +=seven[j];
                 break;
                 case 8:
-                temp.push(eight[j]);
+                graph +=eight[j];
                 break;
                 case 9:
-                temp.push(nine[j]);
+                graph +=nine[j];
                 break;
             }
+            if(i!=num.length-1){
+                graph += " ";
+            }
         }
-        graph.push(temp.join(' '));
+        graph +="\n";
     }
-    console.log(graph.join('\n'));
-    return graph.join('\n');
+    console.log(graph);
+    return graph;
 };
