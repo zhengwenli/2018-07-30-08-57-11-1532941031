@@ -1,6 +1,5 @@
 module.exports = function main(num) {
-    //console.log("Debug Info");
-    num = Number(num);
+
     //0~9对应的LED灯表现形式，分别放入对应的数组
     var zero = ["._.","|.|","|_|"];
     var one = ["...","..|","..|"];
@@ -12,13 +11,6 @@ module.exports = function main(num) {
     var seven = ["._.","..|","..|"];
     var eight = ["._.","|_|","|_|"];
     var nine = ["._.","|_|","..|"]
-
-    //数字拆分成单个数字，建立一个contain空数组来容纳拆分的数字
-    var contain = [];
-    while (num != 0){
-        contain.push(num % 10);
-        num = (num - num % 10) / 10;
-    }
     
     /*
       LED分为三行显示数字，所以本程序的思想是如果数字位数多于1，先
@@ -33,8 +25,8 @@ module.exports = function main(num) {
     var graph = [];
     for(var j = 0; j < 3; j++){
         var temp = [];
-        for(var i =0; i < contain.length; i++){
-            switch (contain[contain.length - 1 - i]){
+        for(var i =0; i < num.length; i++){
+            switch (Number(num[i])){
                 case 0:
                 temp.push(zero[j]);
                 break;
