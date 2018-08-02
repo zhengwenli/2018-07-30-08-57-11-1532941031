@@ -1,6 +1,6 @@
 module.exports = function main(num) {
     //console.log("Debug Info");
-
+    num = Number(num);
     //0~9对应的LED灯表现形式，分别放入对应的数组
     var zero = ["._.","|.|","|_|"];
     var one = ["...","..|","..|"];
